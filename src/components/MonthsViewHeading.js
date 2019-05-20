@@ -5,7 +5,7 @@ import { LeftArrow, RightArrow } from '../utils/assets';
 
 export default class MonthsViewHeading extends Component {
   static propTypes = {
-    year: PropTypes.object.isRequired,
+    month: PropTypes.object.isRequired,
     onNextYear: PropTypes.func.isRequired,
     onPrevYear: PropTypes.func.isRequired,
     isGregorian: PropTypes.bool
@@ -17,7 +17,7 @@ export default class MonthsViewHeading extends Component {
   };
 
   render() {
-    const { year, styles, isGregorian } = this.props;
+    const { month, styles, isGregorian } = this.props;
 
     const yearFormat = isGregorian ? 'YYYY' : 'jYYYY';
 
@@ -26,7 +26,7 @@ export default class MonthsViewHeading extends Component {
         <RightArrow onClick={this.props.onPrevYear} />
 
         <span className={styles.title} style={{ border: 'none', color: '' }} >
-          { isGregorian ? year.format(yearFormat) : <span>{ persianNumber(year.format(yearFormat)) }</span> }
+          { isGregorian ? month.format(yearFormat) : <span>{ persianNumber(month.format(yearFormat)) }</span> }
         </span>
 
         <LeftArrow onClick={this.props.onNextYear} />
