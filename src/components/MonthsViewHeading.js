@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { persianNumber } from '../utils/persian';
-import { leftArrow, rightArrow } from '../utils/assets';
+import { LeftArrow, RightArrow } from '../utils/assets';
 
 export default class MonthsViewHeading extends Component {
   static propTypes = {
@@ -17,31 +17,19 @@ export default class MonthsViewHeading extends Component {
   };
 
   render() {
-    const { year, styles, type,isGregorian } = this.props;
+    const { year, styles, isGregorian } = this.props;
 
     const yearFormat = isGregorian ? 'YYYY' : 'jYYYY';
 
     return (
-      <div className={styles.heading}>
-        <span className={styles.title}>
-          {isGregorian?year.format(yearFormat):persianNumber(year.format(yearFormat))}
+      <div className={styles.heading} style={{ marginBottom: '0px', }} >
+        <RightArrow onClick={this.props.onPrevYear} />
+
+        <span className={styles.title} style={{ border: 'none', color: '' }} >
+          { isGregorian ? year.format(yearFormat) : <span>{ persianNumber(year.format(yearFormat)) }</span> }
         </span>
-        <button
-          type="button"
-          title={isGregorian ? "before year" : "سال قبل"}
-          style={styles.navButton}
-          className={styles.prev}
-          onClick={this.props.onPrevYear}
-          dangerouslySetInnerHTML={rightArrow}
-        />
-        <button
-          type="button"
-          title={isGregorian ? "next year" : "سال بعد"}
-          style={styles.navButton}
-          className={styles.next}
-          onClick={this.props.onNextYear}
-          dangerouslySetInnerHTML={leftArrow}
-        />
+
+        <LeftArrow onClick={this.props.onNextYear} />
       </div>
     );
   }

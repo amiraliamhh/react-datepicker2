@@ -131,7 +131,7 @@ export class Calendar extends Component {
 
   renderDays = () => {
     const { month, selectedDay, isGregorian } = this.state;
-    const { children, min, max, styles, outsideClickIgnoreClass } = this.props;
+    const { children, min, max, styles } = this.props;
 
     let days;
 
@@ -180,21 +180,18 @@ export class Calendar extends Component {
 
   render() {
     const {
-      selectedDay,
-      min,
-      max,
-      onClickOutside,
-      outsideClickIgnoreClass,
       styles,
       className
     } = this.props;
-    const { mode, isGregorian } = this.state;
+    const { isGregorian } = this.state;
 
     const jalaaliClassName = isGregorian ? '' : 'jalaali ';
 
     return (
       <div className={styles.calendarContainer + ' ' + jalaaliClassName + className}>
-        {mode === 'monthSelector' ? this.renderMonthSelector() : this.renderDays()}
+      {
+        this.renderDays()
+      }
       </div>
     );
   }

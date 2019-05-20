@@ -199,7 +199,7 @@ export default class DatePicker extends Component {
 
   renderCalendar = (ref) => {
     const { momentValue, isGregorian, timePickerComponent: TimePicker } = this.state;
-    const { onChange, min, max, defaultMonth, styles, calendarContainerProps } = this.props;
+    const { min, max, defaultMonth, styles, calendarContainerProps } = this.props;
 
     return (
       <div ref={ref}>
